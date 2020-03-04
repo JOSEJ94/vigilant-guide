@@ -1,41 +1,42 @@
 import React, { Component } from 'react';
-import { Input, Item } from 'native-base';
-import { string, any } from 'prop-types';
+import { TextField } from 'react-native-material-textfield';
+import { string, func, any } from 'prop-types';
 
 class TextInput extends Component {
+  passwordMask = text => '*';
+
   render() {
     const {
       text,
       placeholder,
-      containerStyle,
-      textStyle,
+      label,
       onChangeText,
+      secureTextEntry,
       ...otherProps
     } = this.props;
     return (
-      <Item underline style={containerStyle}>
-        <Input
-          placeholder={placeholder}
-          style={textStyle}
-          {...otherProps}
-          onChangeText={onChangeText}
-        />
-      </Item>
+      <TextField
+        secureTextEntry={secureTextEntry}
+        value={text}
+        placeholder={placeholder}
+        label={label}
+        onChangeText={onChangeText}
+        {...otherProps}
+      />
     );
   }
 }
 TextInput.propTypes = {
   text: string.isRequired,
   placeholder: string,
-  containerStyle: any,
-  textStyle: any,
+  label: string,
+  onChangeText: func.isRequired,
   otherProps: any
 };
 TextInput.defaultProps = {
   placeholder: '',
-  containerStyle: {},
-  textStyle: {},
-  otherProps: null
+  label: 'Label',
+  onChangeText: text => console.log(text)
 };
 
 export default TextInput;
