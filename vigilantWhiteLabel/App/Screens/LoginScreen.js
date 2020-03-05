@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import style from './LoginScreenStyle';
 import { Input, Button } from 'react-native-elements';
@@ -12,6 +12,10 @@ export class LoginScreen extends Component {
       password: ''
     };
   }
+
+  static navigationOptions = {
+    headerShown: false
+  };
 
   renderLogo = () => (
     <View style={style.centeredLogo}>
@@ -32,28 +36,36 @@ export class LoginScreen extends Component {
         {this.renderLogo()}
         <View style={[style.loginFormContainer]}>
           <Input
-            label="Usuario"
             placeholder="email@test.com"
             value={username}
             onChangeText={text => this.setState({ username: text })}
             leftIcon={{ type: 'font-awesome', name: 'user-circle' }}
             keyboardType="email-address"
+            inputContainerStyle={style.inputNoUnderline}
+            leftIconContainerStyle={style.marginRightMicro}
+            containerStyle={style.roundedInput}
           />
           <Input
             containerStyle={[style.marginTopMicro]}
-            label="Contraseña"
             placeholder="Contraseña"
             value={password}
             onChangeText={text => this.setState({ password: text })}
             leftIcon={{ type: 'font-awesome', name: 'asterisk' }}
             secureTextEntry
+            inputContainerStyle={style.inputNoUnderline}
+            leftIconContainerStyle={style.marginRightMicro}
+            containerStyle={style.roundedInput}
           />
           <Button
             containerStyle={[style.marginTopSmall]}
-            buttonStyle={[style.loginButton]}
+            buttonStyle={[style.loginButton, style.roundedButton]}
             title="Iniciar Sesión"
             loading={false}
           />
+          <View style={style.bottomOptions}>
+            <Text>Crear cuenta</Text>
+            <Text>Necesitas ayuda?</Text>
+          </View>
         </View>
       </SafeAreaView>
     );
