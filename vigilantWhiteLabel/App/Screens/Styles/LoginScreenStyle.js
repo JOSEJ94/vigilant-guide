@@ -1,4 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { Colors } from '../../Theme/Colors';
 
 export default EStyleSheet.create({
   screenContainer: {
@@ -28,6 +29,7 @@ export default EStyleSheet.create({
     marginRight: '1rem'
   },
   loginButton: {
+    backgroundColor: Colors.Primary,
     height: '4rem'
   },
   inputNoUnderline: {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import style from './LoginScreenStyle';
+import style from './Styles/LoginScreenStyle';
 import { Input, Button } from 'react-native-elements';
 
 export class LoginScreen extends Component {
@@ -9,12 +9,18 @@ export class LoginScreen extends Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      showPassword: false
     };
   }
 
   static navigationOptions = {
     headerShown: false
+  };
+
+  toggleShowPassword = () => {
+    const { showPassword } = this.state;
+    this.setState({ showPassword: !showPassword });
   };
 
   renderLogo = () => (
@@ -30,7 +36,7 @@ export class LoginScreen extends Component {
   );
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, showPassword } = this.state;
     return (
       <SafeAreaView style={[style.screenContainer]}>
         {this.renderLogo()}
@@ -51,7 +57,12 @@ export class LoginScreen extends Component {
             value={password}
             onChangeText={text => this.setState({ password: text })}
             leftIcon={{ type: 'font-awesome', name: 'asterisk' }}
-            secureTextEntry
+            rightIcon={{
+              type: 'font-awesome',
+              name: 'eye',
+              onPress: this.toggleShowPassword
+            }}
+            secureTextEntry={!showPassword}
             inputContainerStyle={style.inputNoUnderline}
             leftIconContainerStyle={style.marginRightMicro}
             containerStyle={style.roundedInput}
