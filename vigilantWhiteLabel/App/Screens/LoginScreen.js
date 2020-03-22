@@ -3,6 +3,7 @@ import { View, Image, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import style from './Styles/LoginScreenStyle';
 import { Input, Button } from 'react-native-elements';
+import { LoggedInRouteNames } from '../Routes/LoggedInRoutes';
 
 export class LoginScreen extends Component {
   constructor(props) {
@@ -10,7 +11,8 @@ export class LoginScreen extends Component {
     this.state = {
       username: '',
       password: '',
-      showPassword: false
+      showPassword: false,
+      loading: false
     };
   }
 
@@ -23,6 +25,14 @@ export class LoginScreen extends Component {
     this.setState({ showPassword: !showPassword });
   };
 
+  attemptLogin = () => {
+    this.setState({ loading: true });
+    setTimeout(() => {
+      const { navigation } = this.props;
+      this.setState({ loading: false });
+      navigation.navigate(LoggedInRouteNames.Home);
+    }, 5000);
+  };
   renderLogo = () => (
     <View style={style.centeredLogo}>
       <Image
@@ -36,7 +46,7 @@ export class LoginScreen extends Component {
   );
 
   render() {
-    const { username, password, showPassword } = this.state;
+    const { username, password, showPassword, loading } = this.state;
     return (
       <SafeAreaView style={[style.screenContainer]}>
         {this.renderLogo()}
@@ -71,7 +81,8 @@ export class LoginScreen extends Component {
             containerStyle={[style.marginTopSmall]}
             buttonStyle={[style.loginButton, style.roundedButton]}
             title="Iniciar Sesión"
-            loading={false}
+            loading={loading}
+            onPress={this.attemptLogin}
           />
           <View style={style.bottomOptions}>
             <Text>Crear cuenta</Text>
