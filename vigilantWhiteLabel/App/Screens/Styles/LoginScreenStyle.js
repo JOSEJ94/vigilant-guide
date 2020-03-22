@@ -2,6 +2,11 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { Colors } from '../../Theme/Colors';
 
 export default EStyleSheet.create({
+  loginScreenBackgroundImage: {
+    backgroundColor: Colors.Primary,
+    width: '100%',
+    height: '100%'
+  },
   screenContainer: {
     flex: 1
   },
@@ -41,7 +46,9 @@ export default EStyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
     borderWidth: 1,
-    borderColor: 'lightgrey',
+    borderColor: Colors.SnowWhiteTranslucid,
+    backgroundColor: Colors.SnowWhiteTranslucid,
+    opacity: 0.65,
     borderRadius: 25
   },
   roundedButton: {
@@ -50,7 +57,7 @@ export default EStyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
     borderWidth: 1,
-    borderColor: 'lightgrey',
+    borderColor: Colors.Primary,
     borderRadius: 40
   },
   bottomOptions: {
