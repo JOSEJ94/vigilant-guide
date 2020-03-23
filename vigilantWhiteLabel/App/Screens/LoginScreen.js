@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Image, Text, ImageBackground } from 'react-native';
+import { View, Image, ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import style from './Styles/LoginScreenStyle';
 import { Input, Button } from 'react-native-elements';
+import { withTranslation } from 'react-i18next';
 import { LoggedInRouteNames } from '../Routes/LoggedInRoutes';
 import { AuthRouteNames } from '../Routes/LoginRoutes';
 import backgroundImg from '../Images/background.jpg';
@@ -18,10 +19,6 @@ export class LoginScreen extends Component {
       loading: false
     };
   }
-
-  static navigationOptions = {
-    headerShown: false
-  };
 
   toggleShowPassword = () => {
     const { showPassword } = this.state;
@@ -60,6 +57,9 @@ export class LoginScreen extends Component {
 
   render() {
     const { username, password, showPassword, loading } = this.state;
+    const { t } = this.props;
+    console.log(this.props);
+
     const emailIcon = {
       type: 'font-awesome',
       name: 'user-circle',
@@ -86,7 +86,7 @@ export class LoginScreen extends Component {
         {this.renderLogo()}
         <View style={[style.loginFormContainer]}>
           <Input
-            placeholder="email@test.com"
+            placeholder={t('email')}
             placeholderTextColor={Colors.SnowWhite}
             value={username}
             onChangeText={text => this.setState({ username: text })}
@@ -103,7 +103,7 @@ export class LoginScreen extends Component {
           <Input
             ref={ref => (this.pswBtnRef = ref)}
             containerStyle={[style.marginTopMicro]}
-            placeholder="Contraseña"
+            placeholder={t('password')}
             placeholderTextColor={Colors.SnowWhite}
             value={password}
             onChangeText={text => this.setState({ password: text })}
@@ -120,19 +120,19 @@ export class LoginScreen extends Component {
           <Button
             containerStyle={[style.marginTopSmall]}
             buttonStyle={[style.loginButton, style.roundedButton]}
-            title="Iniciar Sesión"
+            title={t('attemptLogin')}
             loading={loading}
             onPress={this.attemptLogin}
           />
           <View style={style.bottomOptions}>
             <Button
-              title="Crear Cuenta"
+              title={t('needAccount')}
               titleStyle={style.secondaryOptions}
               onPress={this.navigateToSignUp}
               type="clear"
             />
             <Button
-              title="Necesitas ayuda?"
+              title={t('needHelp')}
               titleStyle={style.secondaryOptions}
               type="clear"
             />
@@ -143,4 +143,8 @@ export class LoginScreen extends Component {
   }
 }
 
-export default LoginScreen;
+const LoginScreenComponent = withTranslation('login')(LoginScreen);
+LoginScreenComponent.navigationOptions = {
+  headerShown: false
+};
+export default LoginScreenComponent;
