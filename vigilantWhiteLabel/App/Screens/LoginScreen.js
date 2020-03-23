@@ -33,7 +33,7 @@ export class LoginScreen extends Component {
       const { navigation } = this.props;
       this.setState({ loading: false });
       navigation.navigate(LoggedInRouteNames.Home);
-    }, 5000);
+    }, 1000);
   };
   renderLogo = () => (
     <View style={style.centeredLogo}>
@@ -49,66 +49,77 @@ export class LoginScreen extends Component {
 
   render() {
     const { username, password, showPassword, loading } = this.state;
+    const emailIcon = {
+      type: 'font-awesome',
+      name: 'user-circle',
+      color: Colors.TextAlternativeDisabled
+    };
+    const passwordIcon = {
+      type: 'font-awesome',
+      name: 'asterisk',
+      color: Colors.TextAlternativeDisabled
+    };
+    const showPasswordIcon = {
+      type: 'font-awesome',
+      name: 'eye',
+      color: showPassword ? Colors.White : Colors.SnowWhite,
+      onPress: this.toggleShowPassword
+    };
     return (
-      <ImageBackground
-        source={backgroundImg}
-        style={style.loginScreenBackgroundImage}
-        imageStyle={{ opacity: 0.5 }}
-      >
-        <SafeAreaView style={[style.screenContainer]}>
-          {this.renderLogo()}
-          <View style={[style.loginFormContainer]}>
-            <Input
-              placeholder="email@test.com"
-              value={username}
-              onChangeText={text => this.setState({ username: text })}
-              leftIcon={{
-                type: 'font-awesome',
-                name: 'user-circle',
-                color: Colors.TextAlternativeDisabled
-              }}
-              keyboardType="email-address"
-              inputContainerStyle={style.inputNoUnderline}
-              leftIconContainerStyle={style.marginRightMicro}
-              containerStyle={style.roundedInput}
-            />
-            <Input
-              containerStyle={[style.marginTopMicro]}
-              placeholder="Contraseña"
-              value={password}
-              onChangeText={text => this.setState({ password: text })}
-              leftIcon={{
-                type: 'font-awesome',
-                name: 'asterisk',
-                color: Colors.TextAlternativeDisabled
-              }}
-              rightIcon={{
-                type: 'font-awesome',
-                name: 'eye',
-                color: showPassword
-                  ? Colors.Primary
-                  : Colors.TextAlternativeDisabled,
-                onPress: this.toggleShowPassword
-              }}
-              secureTextEntry={!showPassword}
-              inputContainerStyle={style.inputNoUnderline}
-              leftIconContainerStyle={style.marginRightMicro}
-              containerStyle={style.roundedInput}
+      <SafeAreaView style={[style.screenContainer]}>
+        <ImageBackground
+          source={backgroundImg}
+          style={style.loginScreenBackgroundImage}
+          imageStyle={{ opacity: 0.5 }}
+        />
+        {this.renderLogo()}
+        <View style={[style.loginFormContainer]}>
+          <Input
+            placeholder="email@test.com"
+            placeholderTextColor={Colors.SnowWhite}
+            value={username}
+            onChangeText={text => this.setState({ username: text })}
+            leftIcon={emailIcon}
+            keyboardType="email-address"
+            inputStyle={style.inputStyle}
+            inputContainerStyle={style.inputNoUnderline}
+            leftIconContainerStyle={style.marginRightMicro}
+            containerStyle={style.roundedInput}
+          />
+          <Input
+            containerStyle={[style.marginTopMicro]}
+            placeholder="Contraseña"
+            placeholderTextColor={Colors.SnowWhite}
+            value={password}
+            onChangeText={text => this.setState({ password: text })}
+            leftIcon={passwordIcon}
+            rightIcon={showPasswordIcon}
+            secureTextEntry={!showPassword}
+            inputContainerStyle={style.inputNoUnderline}
+            leftIconContainerStyle={style.marginRightMicro}
+            containerStyle={style.roundedInput}
+          />
+          <Button
+            containerStyle={[style.marginTopSmall]}
+            buttonStyle={[style.loginButton, style.roundedButton]}
+            title="Iniciar Sesión"
+            loading={loading}
+            onPress={this.attemptLogin}
+          />
+          <View style={style.bottomOptions}>
+            <Button
+              title="Crear Cuenta"
+              titleStyle={style.secondaryOptions}
+              type="clear"
             />
             <Button
-              containerStyle={[style.marginTopSmall]}
-              buttonStyle={[style.loginButton, style.roundedButton]}
-              title="Iniciar Sesión"
-              loading={loading}
-              onPress={this.attemptLogin}
+              title="Crear Cuenta"
+              titleStyle={style.secondaryOptions}
+              type="clear"
             />
-            <View style={style.bottomOptions}>
-              <Text>Crear cuenta</Text>
-              <Text>Necesitas ayuda?</Text>
-            </View>
           </View>
-        </SafeAreaView>
-      </ImageBackground>
+        </View>
+      </SafeAreaView>
     );
   }
 }

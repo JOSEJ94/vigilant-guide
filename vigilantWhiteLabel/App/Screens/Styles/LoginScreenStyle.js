@@ -4,6 +4,7 @@ import { Colors } from '../../Theme/Colors';
 export default EStyleSheet.create({
   loginScreenBackgroundImage: {
     backgroundColor: Colors.Primary,
+    position: 'absolute',
     width: '100%',
     height: '100%'
   },
@@ -40,6 +41,9 @@ export default EStyleSheet.create({
   inputNoUnderline: {
     borderBottomWidth: 0
   },
+  inputStyle: {
+    color: Colors.White
+  },
   roundedInput: {
     borderStyle: 'solid',
     overflow: 'hidden',
@@ -61,7 +65,12 @@ export default EStyleSheet.create({
     borderRadius: 40
   },
   bottomOptions: {
+    marginTop: '1rem',
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  secondaryOptions: {
+    color: Colors.SnowWhite,
+    fontWeight: 'bold'
   }
 });
