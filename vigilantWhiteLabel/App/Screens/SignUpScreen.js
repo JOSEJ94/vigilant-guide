@@ -4,7 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import style from './Styles/LoginScreenStyle';
 import { Input, Button } from 'react-native-elements';
 import { LoggedInRouteNames } from '../Routes/LoggedInRoutes';
-import { AuthRouteNames } from '../Routes/LoginRoutes';
 import backgroundImg from '../Images/background.jpg';
 import { Colors } from '../Theme/Colors';
 
@@ -19,10 +18,6 @@ export class LoginScreen extends Component {
     };
   }
 
-  static navigationOptions = {
-    headerShown: false
-  };
-
   toggleShowPassword = () => {
     const { showPassword } = this.state;
     this.setState({ showPassword: !showPassword });
@@ -36,16 +31,6 @@ export class LoginScreen extends Component {
       navigation.navigate(LoggedInRouteNames.Home);
     }, 1000);
   };
-
-  navigateToSignUp = () => {
-    const {
-      navigation: { navigate }
-    } = this.props;
-    navigate(AuthRouteNames.SignUp);
-  };
-
-  focusPasswordInput = () => this.pswBtnRef.focus();
-
   renderLogo = () => (
     <View style={style.centeredLogo}>
       <Image
@@ -78,11 +63,6 @@ export class LoginScreen extends Component {
     };
     return (
       <SafeAreaView style={[style.screenContainer]}>
-        <ImageBackground
-          source={backgroundImg}
-          style={style.loginScreenBackgroundImage}
-          imageStyle={{ opacity: 0.5 }}
-        />
         {this.renderLogo()}
         <View style={[style.loginFormContainer]}>
           <Input
@@ -96,12 +76,8 @@ export class LoginScreen extends Component {
             inputContainerStyle={style.inputNoUnderline}
             leftIconContainerStyle={style.marginRightMicro}
             containerStyle={style.roundedInput}
-            blurOnSubmit={false}
-            returnKeyType="next"
-            onSubmitEditing={this.focusPasswordInput}
           />
           <Input
-            ref={ref => (this.pswBtnRef = ref)}
             containerStyle={[style.marginTopMicro]}
             placeholder="Contraseña"
             placeholderTextColor={Colors.SnowWhite}
@@ -110,12 +86,9 @@ export class LoginScreen extends Component {
             leftIcon={passwordIcon}
             rightIcon={showPasswordIcon}
             secureTextEntry={!showPassword}
-            inputStyle={style.inputStyle}
             inputContainerStyle={style.inputNoUnderline}
             leftIconContainerStyle={style.marginRightMicro}
             containerStyle={style.roundedInput}
-            returnKeyType="send"
-            onSubmitEditing={this.attemptLogin}
           />
           <Button
             containerStyle={[style.marginTopSmall]}
@@ -128,7 +101,6 @@ export class LoginScreen extends Component {
             <Button
               title="Crear Cuenta"
               titleStyle={style.secondaryOptions}
-              onPress={this.navigateToSignUp}
               type="clear"
             />
             <Button
