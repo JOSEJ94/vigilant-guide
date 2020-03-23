@@ -1,0 +1,9 @@
+{
+  "login": {
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "attemptLogin": "Iniciar Sesión",
+    "needAccount": "Crear cuenta",
+    "needHelp": "Necesitas ayuda?"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "attemptLogin": "Log in",
+    "needAccount": "Create an account",
+    "needHelp": "Need help?"
+  }
+}
