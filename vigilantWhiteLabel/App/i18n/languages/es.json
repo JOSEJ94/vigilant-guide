@@ -5,5 +5,13 @@
     "attemptLogin": "Iniciar Sesión",
     "needAccount": "Crear cuenta",
     "needHelp": "Necesitas ayuda?"
+  },
+  "signUp": {
+    "fullname": "Nombre completo",
+    "email": "Correo electrónico",
+    "phone": "Número Telefónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirme la contraseña",
+    "attemptCreate": "Crear cuenta"
   }
 }

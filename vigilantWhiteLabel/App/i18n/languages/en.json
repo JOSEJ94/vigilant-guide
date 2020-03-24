@@ -5,5 +5,13 @@
     "attemptLogin": "Log in",
     "needAccount": "Create an account",
     "needHelp": "Need help?"
+  },
+  "signUp": {
+    "fullname": "Fullname",
+    "email": "Email",
+    "phone": "Phone number",
+    "password": "Password",
+    "confirmPassword": "Confirm your password",
+    "attemptCreate": "Create account"
   }
 }
