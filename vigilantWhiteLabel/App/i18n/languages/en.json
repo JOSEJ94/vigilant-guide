@@ -12,6 +12,8 @@
     "phone": "Phone number",
     "password": "Password",
     "confirmPassword": "Confirm your password",
-    "attemptCreate": "Create account"
+    "attemptCreate": "Create account",
+    "headerTitleText": "Let's Get Started!",
+    "headerRegularText": "Create an account to access content"
   }
 }

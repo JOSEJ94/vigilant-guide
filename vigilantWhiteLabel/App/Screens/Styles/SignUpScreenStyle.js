@@ -6,10 +6,18 @@ export default EStyleSheet.create({
     flex: 1,
     backgroundColor: Colors.SnowWhite
   },
-  centeredLogo: {
+  headerContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'center'
+  },
+  headerTitleText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 25
+  },
+  headerRegularText: {
+    textAlign: 'center',
+    fontSize: 18
   },
   image: {
     width: '15rem',

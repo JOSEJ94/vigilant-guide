@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import style from './Styles/SignUpScreenStyle';
-import { Input, Button } from 'react-native-elements';
+import { Input, Button, Text } from 'react-native-elements';
 import { withTranslation } from 'react-i18next';
 import { LoggedInRouteNames } from '../Routes/LoggedInRoutes';
 import { Colors } from '../Theme/Colors';
@@ -60,6 +60,16 @@ export class SignUpScreen extends Component {
     color: enabled ? Colors.Primary : Colors.Grey
   });
 
+  renderHeaderSection = () => {
+    const { t } = this.props;
+    return (
+      <View style={style.headerContainer}>
+        <Text style={style.headerTitleText}>{t('headerTitleText')}</Text>
+        <Text style={style.headerRegularText}>{t('headerRegularText')}</Text>
+      </View>
+    );
+  };
+
   render() {
     const {
       fullname,
@@ -80,6 +90,7 @@ export class SignUpScreen extends Component {
     const returnKeyType = isFormComplete ? 'send' : 'next';
     return (
       <SafeAreaView style={[style.screenContainer]}>
+        {this.renderHeaderSection()}
         <View style={[style.loginFormContainer]}>
           <Input
             ref={ref => (this.fullNameInputRef = ref)}

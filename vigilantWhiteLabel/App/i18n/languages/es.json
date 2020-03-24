@@ -12,6 +12,8 @@
     "phone": "Número Telefónico",
     "password": "Contraseña",
     "confirmPassword": "Confirme la contraseña",
-    "attemptCreate": "Crear cuenta"
+    "attemptCreate": "Crear cuenta",
+    "headerTitleText": "Vamos a comenzar!",
+    "headerRegularText": "Crea una cuenta para acceder al contenido"
   }
 }

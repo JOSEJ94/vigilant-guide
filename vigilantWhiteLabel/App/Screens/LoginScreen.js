@@ -58,8 +58,6 @@ export class LoginScreen extends Component {
   render() {
     const { username, password, showPassword, loading } = this.state;
     const { t } = this.props;
-    console.log(this.props);
-
     const emailIcon = {
       type: 'font-awesome',
       name: 'user-circle',
