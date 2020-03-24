@@ -3,5 +3,6 @@ export const Colors = {
   TextAlternativeDisabled: '#D4DADA',
   SnowWhiteTranslucid: 'rgba(227,223,222,0.30)',
   SnowWhite: 'rgba(227,223,222,1)',
-  White: '#FFFFFF'
+  White: '#FFFFFF',
+  Grey: '#A9AAAC'
 };
