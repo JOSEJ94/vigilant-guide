@@ -195,5 +195,10 @@ export class SignUpScreen extends Component {
     );
   }
 }
+const SignUpScreenComponent = withTranslation('signUp')(SignUpScreen);
+SignUpScreenComponent.navigationOptions = {
+  title: '',
+  headerTransparent: true
+};
 
-export default withTranslation('signUp')(SignUpScreen);
+export default SignUpScreenComponent;
