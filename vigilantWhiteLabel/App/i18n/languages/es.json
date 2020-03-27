@@ -15,5 +15,11 @@
     "attemptCreate": "Crear cuenta",
     "headerTitleText": "Vamos a comenzar!",
     "headerRegularText": "Crea una cuenta para acceder al contenido"
+  },
+  "settings": {
+    "title": "Configuración de la aplicación",
+    "profile": "Perfil",
+    "support": "Contactar a soporte",
+    "logout": "Cerrar sesión"
   }
 }

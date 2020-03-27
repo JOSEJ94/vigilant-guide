@@ -15,5 +15,11 @@
     "attemptCreate": "Create account",
     "headerTitleText": "Let's Get Started!",
     "headerRegularText": "Create an account to access content"
+  },
+  "settings": {
+    "title": "App Settings",
+    "profile": "Your Profile",
+    "support": "Contact support",
+    "logout": "Log out"
   }
 }
