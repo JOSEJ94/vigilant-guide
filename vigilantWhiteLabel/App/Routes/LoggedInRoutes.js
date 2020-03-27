@@ -1,9 +1,12 @@
-import { createStackNavigator } from 'react-navigation-stack';
-import HomeScreen from '../Screens/HomeScreen';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import HomeStack from './HomeRoutes';
+import SettingsStack from './SettingsRoutes';
 
-export const LoggedInRouteNames = {
-  Home: 'Home'
+export const TabRouteNames = {
+  Home: 'Home',
+  Settings: 'Settings'
 };
-export default HomeStack = createStackNavigator({
-  [LoggedInRouteNames.Home]: HomeScreen
+export default TabStack = createBottomTabNavigator({
+  [TabRouteNames.Home]: HomeStack,
+  [TabRouteNames.Settings]: SettingsStack
 });

@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import style from './Styles/SignUpScreenStyle';
 import { Input, Button, Text } from 'react-native-elements';
 import { withTranslation } from 'react-i18next';
-import { LoggedInRouteNames } from '../Routes/LoggedInRoutes';
+import { HomeRouteNames } from '../Routes/HomeRoutes';
 import { Colors } from '../Theme/Colors';
 
 export class SignUpScreen extends Component {
@@ -25,7 +25,7 @@ export class SignUpScreen extends Component {
     setTimeout(() => {
       const { navigation } = this.props;
       this.setState({ loading: false });
-      navigation.navigate(LoggedInRouteNames.Home);
+      navigation.navigate(HomeRouteNames.Home);
     }, 1000);
   };
 
